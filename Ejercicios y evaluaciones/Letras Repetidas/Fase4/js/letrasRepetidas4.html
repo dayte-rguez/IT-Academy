@@ -1,0 +1,33 @@
+<script>
+    //Create the array containing the characters of the name
+    var nameArray = ['D', 'a', 'y', 't', 'é'];
+
+    /*Only for the purpose of the exercise, there are no lists in js
+    Create the list that contains the characters of the name*/
+    var nameList = ArrayToList(nameArray);
+
+    //Create a list with tha lastname
+    var lastnameList = ['R', 'o', 'd', 'r', 'í', 'g', 'u', 'e', 'z'];
+
+    //Show full name
+    FullnameList(nameList, lastnameList);
+
+    function FullnameList(aNameList, aLastnameList) {
+        aNameList.push(' ');
+        var fullnameList = aNameList.concat(aLastnameList);
+
+        fullnameList.forEach(element => {
+            console.log(element);
+        });
+    }
+
+    //Only for the purpose of the exercise, there are no lists in js
+    function ArrayToList(aArray) {
+        let listArray = [];
+
+        for (let i = 0; i < aArray.length; i++) {
+            listArray.push(aArray[i]);
+        }
+        return listArray;
+    }
+</script>

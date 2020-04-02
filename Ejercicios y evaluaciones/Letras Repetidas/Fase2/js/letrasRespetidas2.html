@@ -1,0 +1,66 @@
+<script>
+    //Create the array containing the characters of the name
+    var nameArray = ['D', 'a', 'y', 't', 'é'];
+
+    /*Only for the purpose of the exercise, there are no lists in js
+    Create the list that contains the characters of the name*/
+    var nameList = ArrayToList(nameArray);
+
+    NameAnalysis(nameList);
+
+    function NameAnalysis(aList) {
+        aList.forEach(CharAnalysis);
+    }
+
+    function CharAnalysis(char) {
+        switch (char) {
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+            case 'A':
+            case 'E':
+            case 'I':
+            case 'O':
+            case 'U':
+            case 'á':
+            case 'é':
+            case 'í':
+            case 'ó':
+            case 'ú':
+            case 'Á':
+            case 'É':
+            case 'Í':
+            case 'Ó':
+            case 'Ú':
+                console.log(`${char} is a vowel`);
+                break;
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                console.log("People's names do not contain numbers");
+                break;
+            default:
+                console.log(`${char} is a consonant`);
+                break;
+        }
+    }
+
+    //Only for the purpose of the exercise, there are no lists in js
+    function ArrayToList(aArray) {
+        let listArray = [];
+
+        for (let i = 0; i < aArray.length; i++) {
+            listArray.push(aArray[i]);
+        }
+        return listArray;
+    }
+</script>

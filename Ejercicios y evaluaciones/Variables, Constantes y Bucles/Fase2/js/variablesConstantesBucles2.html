@@ -1,0 +1,14 @@
+<script>
+    //Create a constant containing the leap year 1948
+    const firstLeapYear = 1948;
+
+    //Create a constant with the period needed for a new leap year
+    const newLeapYear = 4;
+
+    /*Calculate how many leap years are between the created constant 
+    and my birthyear.
+    Math.floor rounds to the nearest integer*/
+    var birthYear = 1983;
+    var numLeapYear = Math.floor((birthYear - firstLeapYear) / newLeapYear);
+    console.log(`There are ${numLeapYear} leap years between ${firstLeapYear} and ${birthYear}`);
+</script>

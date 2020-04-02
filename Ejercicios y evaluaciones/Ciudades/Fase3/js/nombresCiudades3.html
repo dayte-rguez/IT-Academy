@@ -1,0 +1,55 @@
+<script>
+    var city1 = "Barcelona";
+    var city2 = "Madrid";
+    var city3 = "Valencia";
+    var city4 = "Málaga";
+    var city5 = "Cadiz";
+    var city6 = "Santander";
+
+    console.log("The cities are: ");
+    console.log(`${city1}`);
+    console.log(`${city2}`);
+    console.log(`${city3}`);
+    console.log(`${city4}`);
+    console.log(`${city5}`);
+    console.log(`${city6}`);
+
+    //Create an array containing the cities
+    var arrayCities = [
+        city1,
+        city2,
+        city3,
+        city4,
+        city5,
+        city6
+    ];
+
+    //Show the cities alphabetically sorted
+    arrayCities.sort();
+    var message = "Sorted cities:";
+    ShowSortedCities(arrayCities, message);
+
+    //Replace 'a' for '4' in every ciy
+    var replacedCities = ReplaceCities(arrayCities);
+    message = "Replaced sorted cities:";
+    ShowSortedCities(replacedCities, message);
+
+    function ReplaceCities(aArrayCities) {
+        var replacedArray = [];
+        var replacedCity;
+
+        for (let i = 0; i < aArrayCities.length; i++) {
+            replacedCity = aArrayCities[i].replace(/a/g, '4');
+            replacedArray[i] = replacedCity;
+        }
+        return replacedArray;
+    }
+
+    function ShowSortedCities(aArrayCities, aMessage) {
+        console.log();
+        console.log(aMessage);
+        aArrayCities.forEach(element => {
+            console.log(element);
+        });
+    }
+</script>

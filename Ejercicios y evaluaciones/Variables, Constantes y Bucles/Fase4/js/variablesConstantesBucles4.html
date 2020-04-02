@@ -1,0 +1,41 @@
+<script>
+    //#region vars and consts
+
+    //Create a constant containing the leap year 1948
+    const firstLeapYear = 1948;
+
+    //Create a constant with the period needed for a new leap year
+    const newLeapYear = 4;
+
+    var name = "Dayté Dayana";
+    var firtsLastname = "Rodríguez";
+    var secondLastname = "Martínez";
+    var fullName = name + " " + firtsLastname + " " + secondLastname;
+
+    var day = 16;
+    var month = 1;
+    var year = 1983;
+    var birthDate = day + "/" + month + "/" + year;
+
+    //#endregion
+
+    console.log(`My name is ${fullName}`);
+    console.log(`I was born ${birthDate}`);
+
+    if (IsLeap(year)) {
+        console.log("My birth year is leap");
+    } else {
+        console.log("My birth year is not leap");
+    }
+
+    function IsLeap(aYear) {
+        var isLeap;
+        var i;
+        for (i = firstLeapYear; i <= aYear; i += newLeapYear) {
+
+        }
+
+        isLeap = aYear == i - newLeapYear;
+        return isLeap;
+    }
+</script>

@@ -1,0 +1,64 @@
+<script>
+    var city1 = "Barcelona";
+    var city2 = "Madrid";
+    var city3 = "Valencia";
+    var city4 = "Málaga";
+    var city5 = "Cadiz";
+    var city6 = "Santander";
+
+    //Create an array for each city
+    var arrayCiti1 = ArrayCity(city1);
+    var arrayCiti2 = ArrayCity(city2);
+    var arrayCiti3 = ArrayCity(city3);
+    var arrayCiti4 = ArrayCity(city4);
+    var arrayCiti5 = ArrayCity(city5);
+    var arrayCiti6 = ArrayCity(city6);
+
+    //Invert each array and show it
+    var invertedCity1 = InvertedArray(arrayCiti1);
+    ShowInvertedCities(invertedCity1, city1);
+
+    var invertedCity2 = InvertedArray(arrayCiti2);
+    ShowInvertedCities(invertedCity2, city2);
+
+    var invertedCity3 = InvertedArray(arrayCiti3);
+    ShowInvertedCities(invertedCity3, city3);
+
+    var invertedCity4 = InvertedArray(arrayCiti4);
+    ShowInvertedCities(invertedCity4, city4);
+
+    var invertedCity5 = InvertedArray(arrayCiti5);
+    ShowInvertedCities(invertedCity5, city5);
+
+    var invertedCity6 = InvertedArray(arrayCiti6);
+    ShowInvertedCities(invertedCity6, city6);
+
+    function ShowInvertedCities(aInvertedCity, aMessage) {
+        console.log();
+        console.log(aMessage);
+
+        aInvertedCity.forEach(element => {
+            console.log(element);
+        });
+    }
+
+    function InvertedArray(aArray) {
+        var size = aArray.length - 1;
+        var invertedArray = [];
+
+        for (let i = size; i >= 0; i--) {
+            invertedArray[size - i] = aArray[i];
+        }
+        return invertedArray;
+    }
+
+    function ArrayCity(aCity) {
+        //var size = aCity.Length;
+        var arrayCity = [];
+
+        for (let i = 0; i < aCity.length; i++) {
+            arrayCity[i] = aCity[i];
+        }
+        return arrayCity;
+    }
+</script>

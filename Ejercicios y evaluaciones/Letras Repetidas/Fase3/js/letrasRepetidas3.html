@@ -1,0 +1,44 @@
+<script>
+    //Create the array containing the characters of the name
+    var nameArray = ['D', 'a', 'y', 't', 'é'];
+
+    /*Only for the purpose of the exercise, there are no lists in js
+    Create the list that contains the characters of the name*/
+    var nameList = ArrayToList(nameArray);
+
+    //Create a dictionary where key = name char, value = char frequency in the name
+    NameDictionary(nameList);
+
+    function NameDictionary(aList) {
+        var key; //contains the name char
+        var value; //contains how many times it appears in the name
+        var nameDictionary = new Map();
+
+        for (let i = 0; i < aList.length; i++) {
+            key = aList[i];
+            value = 1;
+            for (let j = i + 1; j < aList.length; j++) {
+                if (aList[j] == key) {
+                    value++;
+                    aList.splice(j, 1);
+                    j--;
+                }
+
+            }
+            nameDictionary.set(key, value);
+        }
+        nameDictionary.forEach((value, key, map) => {
+            console.log(`${key} appears ${value} time(s)`);
+        });
+    }
+
+    //Only for the purpose of the exercise, there are no lists in js
+    function ArrayToList(aArray) {
+        let listArray = [];
+
+        for (let i = 0; i < aArray.length; i++) {
+            listArray.push(aArray[i]);
+        }
+        return listArray;
+    }
+</script>

@@ -1,0 +1,43 @@
+<script>
+    //#region Constants
+
+    //Create a constant containing the leap year 1948
+    const firstLeapYear = 1948;
+
+    //Create a constant with the period needed for a new leap year
+    const newLeapYear = 4;
+
+    //Create a constant with the birth year
+    const birthYear = 1983;
+
+    //#endregion
+
+    //Show the leap years between 1948 and the birthyear
+    var lastLeap = ShowLeaps();
+
+    //Show if the birthyear is leap
+    IsBirthyearLeap(lastLeap);
+
+    //#region Functions
+
+    function ShowLeaps() {
+        var i;
+        for (i = firstLeapYear; i <= birthYear; i += newLeapYear) {
+            console.log(`${i}`);
+        }
+        return i - newLeapYear;
+    }
+
+    function IsBirthyearLeap(aLastLeap) {
+        var leapBirthYear = aLastLeap == birthYear;
+        var isLeap = `The birthyear ${birthYear} is leap`;
+        var isNotLeap = `The birthyear ${birthYear} is not leap`;
+
+        if (leapBirthYear) {
+            console.log(isLeap);
+        } else {
+            console.log(isNotLeap);
+        }
+    }
+    //#endregion
+</script>
