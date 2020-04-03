@@ -1,0 +1,21 @@
+<script>
+    /* JS classes must come firts than enything else.
+     * An Object declaration can't exist before its Class definition
+     */
+
+    var name = "Dayte";
+    var year = 1983;
+    var email = "a@a.com";
+
+    ShowPersonalInfo(name, year, email);
+
+    ShowPersonalInfo(aName, aYear, aMail) {
+        Console.WriteLine($ "Función estática: La persona con nombre {aName} que nació en {aYear} y que tiene el email {aMail}");
+    }
+
+    //To avoid replacing Console.writeline when copy/paste from c#
+    var Console = {}; //Declares a class the old way ES5
+    Console.WriteLine = function(aMessage) {
+        console.log(aMessage);
+    }
+</script>
