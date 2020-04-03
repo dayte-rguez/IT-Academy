@@ -87,7 +87,8 @@ namespace Clases_y_Objetos
         public string Email { get; set; }
 
         /* First task when creating a Class:
-         * Create the Constructor, it must have the same name of the Class.
+         * Create the Constructor, 
+         * it must have the same name of the Class (shortcut "ctor").
          * C# allows to create more than one Constructor (overload)
          * By creating  2 Constructors we offer the possibility to create
          * a Person object either by:
