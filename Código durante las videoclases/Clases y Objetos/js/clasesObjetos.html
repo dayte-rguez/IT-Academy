@@ -1,4 +1,39 @@
 <script>
+    /*To avoid replacing Console.Writeline when copy/paste from C#:
+     * Create a Console Class with a Writeline static method, this way
+     * every instance of Console.Writeline will be replaced by the 
+     * console.log JS function*/
+
+    class Console {
+        static WriteLine(aMessage) {
+            console.log(aMessage);
+        }
+    }
+
+    /* Declaring a class the old way ES5 (same as above)
+    var Console = {};
+    Console.WriteLine = function(aMessage) {
+        console.log(aMessage);
+    }
+    */
+
+    //#region Structured Programming
+
+    function ShowPersonalInfo(aName, aYear, aMail) {
+        Console.WriteLine(`Función estática: La persona con nombre ${aName} 
+        que nació en ${aYear} y que tiene el email ${aMail}\n`);
+    }
+
+    var name = "Dayte";
+    var year = 1983;
+    var email = "a@a.com";
+
+    ShowPersonalInfo(name, year, email);
+
+    //#endregion  Structured Programming
+
+    //#region OOP
+
     /* JS classes must come firts than enything else.
      * An Object declaration can't exist before its Class definition
      */
@@ -25,31 +60,45 @@
             return this._eMail;
         }
 
-        set Name(aValue) {
+        set Email(aValue) {
             this._eMail = aValue;
         }
 
-        /* JS does not allow oveloading */
+        /* JS does not allow overloading */
         constructor(aName, aYear, aEmail) {
             this.Name = aName;
             this.Year = aYear;
             this.Email = aEmail;
         }
+
+        ShowClassPersonInfo() {
+            Console.WriteLine(`"Método OOP: La persona con nombre ${this.Name} 
+            que nació en ${this.Year} y que tiene el email ${this.Email}\n`);
+        }
     }
 
-    var name = "Dayte";
-    var year = 1983;
-    var email = "a@a.com";
+    //#region Creating an object 
 
-    ShowPersonalInfo(name, year, email);
+    /* Option A
+     */
+    var dayteA = new Person();
+    dayteA.Name = name + "A";
+    dayteA.Year = year;
+    dayteA.Email = email;
 
-    ShowPersonalInfo(aName, aYear, aMail) {
-        Console.WriteLine($ "Función estática: La persona con nombre {aName} que nació en {aYear} y que tiene el email {aMail}");
-    }
+    /* Option B
+     */
+    var dayteB = new Person(name + "B", year, email);
 
-    //To avoid replacing Console.writeline when copy/paste from c#
-    var Console = {}; //Declares a class the old way ES5
-    Console.WriteLine = function(aMessage) {
-        console.log(aMessage);
-    }
+    //#endregion Creating an object
+
+    /* Using the SP function */
+    ShowPersonalInfo(dayteA.Name, dayteA.Year, dayteA.Email);
+    ShowPersonalInfo(dayteB.Name, dayteB.Year, dayteB.Email);
+
+    /* Using the inbuilt Object methods */
+    dayteA.ShowClassPersonInfo();
+    dayteB.ShowClassPersonInfo();
+
+    //#endregion OOP
 </script>
