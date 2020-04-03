@@ -3,6 +3,40 @@
      * An Object declaration can't exist before its Class definition
      */
 
+    class Person {
+        /* Defining the Properties*/
+        get Name() {
+            return this._name;
+        }
+
+        set Name(aValue) {
+            this._name = aValue;
+        }
+
+        get Year() {
+            return this._year;
+        }
+
+        set Year(aValue) {
+            this._year = aValue;
+        }
+
+        get Email() {
+            return this._eMail;
+        }
+
+        set Name(aValue) {
+            this._eMail = aValue;
+        }
+
+        /* JS does not allow oveloading */
+        constructor(aName, aYear, aEmail) {
+            this.Name = aName;
+            this.Year = aYear;
+            this.Email = aEmail;
+        }
+    }
+
     var name = "Dayte";
     var year = 1983;
     var email = "a@a.com";

@@ -138,7 +138,7 @@ namespace Clases_y_Objetos
           
         public void ShowClassPersonInfo()
         {
-            Console.WriteLine($"Función estática: La persona con nombre {this.Name} que nació en {this.Year} y que tiene el email {this.Email}");
+            Console.WriteLine($"Método OOP: La persona con nombre {this.Name} que nació en {this.Year} y que tiene el email {this.Email}");
         } 
 
          */
