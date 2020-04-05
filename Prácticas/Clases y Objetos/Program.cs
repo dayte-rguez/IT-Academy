@@ -32,6 +32,7 @@ namespace Clases_y_Objetos
             Console.WriteLine("Welcome to the Students Management Program");
             Console.WriteLine("To manage Students, press \"a\"");
             Console.WriteLine("To get Statistics, press \"e\"");
+            Console.WriteLine("To finish the program, press \"f\"");
 
             var keepDoing = true;
             while (keepDoing)
@@ -46,21 +47,27 @@ namespace Clases_y_Objetos
                 {
                     ShowStatsMenu();
                 }
+                else if (option == 'f')
+                {
+                    keepDoing = false;
+                }
+                else
+                {
+                    Console.WriteLine("\nPlease, enter a valid option");
+                    ShowMainMenu();
+                }
             }
         }
         static void ShowStudentsMenu()
         {
-            ShowStudentsMenuOptions();
-
-            /*Console.WriteLine("To list All the Students, type \"all\"");
-            Console.WriteLine("To Add a new Student, type \"add\"");
-            Console.WriteLine("To Update a Student, type \"edit\"");
+            /*Console.WriteLine("To Update a Student, type \"edit\"");
             Console.WriteLine("To Delete a Student, type \"del\"");
             Console.WriteLine("To return to the Main Menu, type \"m\"");*/
 
             var keepDoing = true;
             while (keepDoing)
             {
+                ShowStudentsMenuOptions();
                 var text = Console.ReadLine();
 
                 switch (text)
@@ -78,7 +85,7 @@ namespace Clases_y_Objetos
                         keepDoing = false;
                         break;
                     default:
-                        //AddMark(text);
+                        Console.WriteLine("\nPlease, type a valid option");
                         break;
                 }
             }
@@ -89,7 +96,7 @@ namespace Clases_y_Objetos
         {
             Console.WriteLine("\n--Students Menu--");
 
-            Console.WriteLine("To list All the Students, type \"all\"");
+            Console.WriteLine("To list All Students, type \"all\"");
             Console.WriteLine("To Add a new Student, type \"add\"");
             Console.WriteLine("To Update a Student, type \"edit\"");
             Console.WriteLine("To Delete a Student, type \"del\"");
@@ -101,13 +108,41 @@ namespace Clases_y_Objetos
             Console.WriteLine("\n--Main Menu--");
             Console.WriteLine("To manage Students, press \"a\"");
             Console.WriteLine("To get Statistics, press \"e\"");
+            Console.WriteLine("To finish the program, press \"f\"");
+        }
+
+        private static string ShowStudentsUpdateMenu()
+        {
+            var result = "";
+
+            while (result != "dni" && result != "name" && result != "cancel")
+            {
+                Console.WriteLine("To update the DNI, type \"dni\"");
+                Console.WriteLine("To update the name, type \"name\"");
+                Console.WriteLine("To return to the previous menu, type \"cancel\"");
+                result = Console.ReadLine();
+                if (result != "dni" && result != "name" && result != "cancel")
+                {
+                    Console.WriteLine("\nPlease, enter a valid option\n");
+                }
+            }
+            return result;
         }
         static void ShowAllStudents()
         {
-            /* Key = DNI; Value = Student Object */
-            foreach (var kvp in Students)
+            if (Students.Count == 0)
             {
-                Console.WriteLine($"{kvp.Value.Dni} {kvp.Value.Name}");
+                Console.WriteLine("\n The list of students is empty");
+            }
+            else
+            {
+                Console.WriteLine("\nList of all students:");
+                /* Key = DNI; Value = Student Object */
+                foreach (var kvp in Students)
+                {
+                    Console.WriteLine($"{kvp.Value.Dni} {kvp.Value.Name}");
+                }
+                Console.WriteLine();
             }
         }
 
@@ -137,9 +172,10 @@ namespace Clases_y_Objetos
             return aDNI;
         }
 
-        static void AddNewStudent()
+        private static void AddNewStudent()
         {
-            Console.WriteLine("Please, enter the DNI or type \"cancel\" to interrupt");
+            Console.WriteLine("Please, enter the DNI of the Student to be added " +
+                "or type \"cancel\" to interrupt");
             var keepDoing = true;
             while (keepDoing)
             {
@@ -148,10 +184,8 @@ namespace Clases_y_Objetos
 
                 if (dni == "cancel")
                 {
-                    ShowStudentsMenuOptions();
                     break;
                 }
-
                 else if (Students.ContainsKey(dni))
                 {
                     Console.WriteLine($"DNI {dni} already in the DataBase");
@@ -183,7 +217,6 @@ namespace Clases_y_Objetos
                             };
                             Students.Add(dni, student);
                             Console.WriteLine("Student successfully added");
-                            ShowStudentsMenuOptions();
                         }
                         keepDoing = false;
                         break;
@@ -192,9 +225,63 @@ namespace Clases_y_Objetos
             }
         }
 
+        static void UpdateStudentField(Student aStudent, string aField)
+        {
+            string newDNI;
+
+            switch (aField)
+            {
+                case "dni":
+                    Console.WriteLine("Please, enter the new DNI");
+                    newDNI = Console.ReadLine();
+                    newDNI = CheckDNI(newDNI);
+                    if (newDNI != "cancel")
+                    {
+                        aStudent.Dni = newDNI;
+                        Console.WriteLine($"Student succesfully updated");
+                    }
+                    break;
+                case "cancel":
+                    break;
+                default:
+                    Console.WriteLine("Please, type a valid option\n");
+                    break;
+            }
+        }
+
         static void UpdateStudent()
         {
+            /* Check if there is at least one student available to update */
+            if (Students.Count > 0)
+            {
+                /* Get DNI and check format; offer to abort if needed*/
+                Console.WriteLine("Please, enter the DNI of the Student to be " +
+                        "updated or type \"cancel\" to interrupt");
+                var dni = CheckDNI(Console.ReadLine());
 
+                if (Students.ContainsKey(dni))
+                {
+                    /* Get the student and show its data*/
+                    var student = Students[dni];
+                    Console.WriteLine("Current Student data:");
+                    Console.WriteLine($"DNI: {student.Dni} Name: {student.Name}\n");
+
+                    /* Get and validate the field to be updated */
+                    var fieldToUpdate = ShowStudentsUpdateMenu();
+
+                    /* Update the student (unless cancel selected) */
+                    UpdateStudentField(student, fieldToUpdate);
+                }
+                else if (dni != "cancel") //Unknown DNI
+                {
+                    Console.WriteLine($"DNI {dni} not in the DataBase, please " +
+                        $"add the Student before");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nNothing to edit: The list of students is empty");
+            }
         }
 
         static void AddMark(string aText)
