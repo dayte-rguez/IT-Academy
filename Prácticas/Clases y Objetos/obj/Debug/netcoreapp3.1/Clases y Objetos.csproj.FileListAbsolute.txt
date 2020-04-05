@@ -1,0 +1,13 @@
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\obj\Debug\netcoreapp3.1\Clases y Objetos.csprojAssemblyReference.cache
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\obj\Debug\netcoreapp3.1\Clases y Objetos.csproj.CoreCompileInputs.cache
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\obj\Debug\netcoreapp3.1\Clases y Objetos.AssemblyInfoInputs.cache
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\obj\Debug\netcoreapp3.1\Clases y Objetos.AssemblyInfo.cs
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\bin\Debug\netcoreapp3.1\Clases y Objetos.exe
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\bin\Debug\netcoreapp3.1\Clases y Objetos.deps.json
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\bin\Debug\netcoreapp3.1\Clases y Objetos.runtimeconfig.json
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\bin\Debug\netcoreapp3.1\Clases y Objetos.runtimeconfig.dev.json
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\bin\Debug\netcoreapp3.1\Clases y Objetos.dll
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\bin\Debug\netcoreapp3.1\Clases y Objetos.pdb
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\obj\Debug\netcoreapp3.1\Clases y Objetos.dll
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\obj\Debug\netcoreapp3.1\Clases y Objetos.pdb
+D:\Projects\IT Academy\IT-Academy\Prácticas\Clases y Objetos\obj\Debug\netcoreapp3.1\Clases y Objetos.genruntimeconfig.cache
