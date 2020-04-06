@@ -146,22 +146,22 @@ namespace Clases_y_Objetos
             }
         }
 
-        static string CheckDNI(string aDNI)
+        /* Validate that the input is either a DNI with a proper format (9 chars)
+         * or the keyword "cancel" */
+        static string ValidateDNI(string aDNI)
         {
-            var end = (aDNI == "cancel");
             bool wrongDNI;
-            if (!end)
+            if (aDNI != "cancel")
             {
-                wrongDNI = ((string.IsNullOrEmpty(aDNI)) || (aDNI.Length != 9));
+                wrongDNI = aDNI.Length != 9;
                 while (wrongDNI)
                 {
                     Console.WriteLine("DNI format incorrect, please, try again " +
                         "or type \"cancel\" to abort");
                     aDNI = Console.ReadLine();
-                    end = (aDNI == "cancel");
-                    if (!end)
+                    if (aDNI != "cancel")
                     {
-                        wrongDNI = string.IsNullOrEmpty(aDNI) || (aDNI.Length != 9);
+                        wrongDNI = aDNI.Length != 9;
                     }
                     else
                     {
@@ -172,6 +172,31 @@ namespace Clases_y_Objetos
             return aDNI;
         }
 
+        static string ValidateName(string aName)
+        {
+            bool wrongName;
+            if (aName != "cancel")
+            {
+                /* Make sure name is not empty */
+                wrongName = aName.Trim().Length == 0;
+                while (wrongName)
+                {
+                    Console.WriteLine("Name can not be empty, please, try again " +
+                        "or type \"cancel\" to abort");
+                    aName = Console.ReadLine();
+                    if (aName != "cancel")
+                    {
+                        wrongName = aName.Trim().Length == 0;
+                    }
+                    else
+                    {
+                        return aName;
+                    }
+                }
+            }
+            return aName;
+        }
+
         private static void AddNewStudent()
         {
             Console.WriteLine("Please, enter the DNI of the Student to be added " +
@@ -180,7 +205,7 @@ namespace Clases_y_Objetos
             while (keepDoing)
             {
                 /* Check DNI format and offer to abort if needed*/
-                var dni = CheckDNI(Console.ReadLine());
+                var dni = ValidateDNI(Console.ReadLine());
 
                 if (dni == "cancel")
                 {
@@ -225,20 +250,31 @@ namespace Clases_y_Objetos
             }
         }
 
-        static void UpdateStudentField(Student aStudent, string aField)
+        private static void UpdateStudentField(Student aStudent, string aField)
         {
-            string newDNI;
+            string newValue;
 
             switch (aField)
             {
                 case "dni":
                     Console.WriteLine("Please, enter the new DNI");
-                    newDNI = Console.ReadLine();
-                    newDNI = CheckDNI(newDNI);
-                    if (newDNI != "cancel")
+                    newValue = ValidateDNI(Console.ReadLine());
+                    if (newValue != "cancel")
                     {
-                        aStudent.Dni = newDNI;
-                        Console.WriteLine($"Student succesfully updated");
+                        /* Remove old entry from the dictionary and add the new one */
+                        Students.Remove(aStudent.Dni);
+                        aStudent.Dni = newValue;
+                        Students.Add(aStudent.Dni, aStudent);
+                        Console.WriteLine($"Student DNI succesfully updated");
+                    }
+                    break;
+                case "name":
+                    Console.WriteLine("Please, enter the new name");
+                    newValue = ValidateName(Console.ReadLine());
+                    if (newValue != "cancel")
+                    {
+                        aStudent.Name = newValue;
+                        Console.WriteLine($"Student Name succesfully updated");
                     }
                     break;
                 case "cancel":
@@ -257,7 +293,7 @@ namespace Clases_y_Objetos
                 /* Get DNI and check format; offer to abort if needed*/
                 Console.WriteLine("Please, enter the DNI of the Student to be " +
                         "updated or type \"cancel\" to interrupt");
-                var dni = CheckDNI(Console.ReadLine());
+                var dni = ValidateDNI(Console.ReadLine());
 
                 if (Students.ContainsKey(dni))
                 {

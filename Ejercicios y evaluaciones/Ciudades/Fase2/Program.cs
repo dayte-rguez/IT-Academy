@@ -42,7 +42,6 @@ namespace Fase2
             {
                 Console.WriteLine(item);
             }
-
         }
     }
 }

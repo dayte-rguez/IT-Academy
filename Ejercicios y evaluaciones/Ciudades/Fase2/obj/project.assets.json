@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\IT Academy\\Visual Studio\\Nombres ciudades\\Fase2\\Fase2.csproj",
+      "projectUniqueName": "D:\\Projects\\IT Academy\\IT-Academy\\Ejercicios y evaluaciones\\Ciudades\\Fase2\\Fase2.csproj",
       "projectName": "Fase2",
-      "projectPath": "D:\\Projects\\IT Academy\\Visual Studio\\Nombres ciudades\\Fase2\\Fase2.csproj",
+      "projectPath": "D:\\Projects\\IT Academy\\IT-Academy\\Ejercicios y evaluaciones\\Ciudades\\Fase2\\Fase2.csproj",
       "packagesPath": "C:\\Users\\drodr\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\IT Academy\\Visual Studio\\Nombres ciudades\\Fase2\\obj\\",
+      "outputPath": "D:\\Projects\\IT Academy\\IT-Academy\\Ejercicios y evaluaciones\\Ciudades\\Fase2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -63,7 +63,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
