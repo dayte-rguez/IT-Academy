@@ -81,6 +81,9 @@ namespace Clases_y_Objetos
                     case "edit":
                         UpdateStudent();
                         break;
+                    case "del":
+                        RemoveStudent();
+                        break;
                     case "m":
                         keepDoing = false;
                         break;
@@ -317,6 +320,57 @@ namespace Clases_y_Objetos
             else
             {
                 Console.WriteLine("\nNothing to edit: The list of students is empty");
+            }
+        }
+
+        private static void RemoveStudent()
+        {
+            /* Check if there is at least one student available to delete */
+            if (Students.Count > 0)
+            {
+                /* Get DNI and check format; offer to abort if needed*/
+                Console.WriteLine("Please, enter the DNI of the Student to be " +
+                        "deleted or type \"cancel\" to interrupt");
+                var dni = ValidateDNI(Console.ReadLine());
+
+                if (Students.ContainsKey(dni))
+                {
+                    /* Get the student and show its data*/
+                    var student = Students[dni];
+                    Console.WriteLine("\nCurrent Student data:");
+                    Console.WriteLine($"DNI: {student.Dni} Name: {student.Name}\n");
+
+                    /* Offer to delete the student or abort */
+                    DeleteStudent(student);
+                }
+                else if (dni != "cancel") //Unknown DNI
+                {
+                    Console.WriteLine($"DNI {dni} not in the DataBase");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nNothing to delete: The list of students is empty");
+            }
+        }
+
+        private static void DeleteStudent(Student aStudent)
+        {
+            Console.WriteLine("\nPlease, type \"del\" to confirm removing " +
+                "the student or \"cancel\" to abort");
+            var input = Console.ReadLine();
+
+            while ((input != "del") && (input != "cancel" ))
+            {
+                Console.WriteLine("\nPlease, type a valid option: \"del\" to " +
+                    "confirm removing the student or \"cancel\" to abort");
+                input = Console.ReadLine();
+            }
+            if (input == "del")
+            {
+                /* Remove entry from the dictionary*/
+                Students.Remove(aStudent.Dni);
+                Console.WriteLine($"Student succesfully removed");
             }
         }
 
