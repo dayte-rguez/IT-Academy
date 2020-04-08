@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+
+<script>
+    function Suma() {
+        //Ways to retrieve a textbox value 
+        var num1Text = document.getElementById("Num1").value;
+        var num2Text = Num2.value;
+
+        //String to number
+        var num1 = num1Text * 1;
+        var num2 = num2Text * 1
+
+        var suma = num1 + num2;
+        alert(`"La suma es ${suma}"`)
+    }
+</script>
+
+<body>
+    <div>
+        <input id="Num1" type="text"><br>
+        <input id="Num2" type="text"><br>
+
+        <input type="button" value="Suma" onclick="Suma()">
+    </div>
+
+</body>
+
+</html>
