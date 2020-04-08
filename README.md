@@ -8,12 +8,11 @@ What am I learning with each exercise?
 		- Create a <strong>desktop application with .Net (WPF)</strong>
 		- MainWindow.xaml manages what will be the GUI of the resulting application
 			- <strong>x:Name</strong> is the unique identifier of each element in the GUI
+			- Grid is the container that allows to accomodate the visual experience through rows and columns
 		- MainWindow.xaml.cs contains the C# code
 	- JS in Visual Studio Code
-		- Typing "<strong>html:5</strong>" autocompletes the template to create a web page
-		- Next: update the "title"
-		- To add the JS code, below the head, type "<strong>script</strong>" so the tag is autocompleted
-		- <strong>Ways to retrieve a textbox value</strong>:
-			- Using getElementById: document.getElementById("Num1").value
-			- Using the element ID: Num2.value;
-		- Fastest way converting a <strong>string to number</strong>: string * 1
+		- Snipets to autocomplete templates:
+			- html:5 to create a web page
+			- script
+		- Ways to retrieve an elemet value by using its ID
+		- Fastest way of converting a <strong>string to number</strong>
