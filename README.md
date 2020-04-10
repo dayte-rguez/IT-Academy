@@ -48,6 +48,10 @@ Most of the exercises are coded in <strong>C# in Visual Studio</strong>, as well
 			- <strong>x:Name</strong> is the unique identifier of each element in the GUI
 			- Grid is the container that allows to accomodate the visual experience through rows and columns
 		- MainWindow.xaml.cs contains the C# code
+		- Enums
 	- JS in Visual Studio Code:
-		- Ways to retrieve an element value by using its ID
+		- Reference js and cs external files
+		- Declare a class and an object
+		- Function return several values
+		- Enums
 		- Fastest way of converting a <strong>string to number</strong>
