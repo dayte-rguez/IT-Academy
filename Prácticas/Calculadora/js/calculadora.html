@@ -4,32 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/App.js"></script>
+
+    <!-- Link with js and css files-->
+    <link rel="stylesheet" href="css/Style.css">
     <title>Calculadora</title>
 </head>
 
-<script>
-    function Suma() {
-        //Ways to retrieve a textbox value 
-        var num1Text = document.getElementById("Num1").value;
-        var num2Text = Num2.value;
-
-        //String to number
-        var num1 = num1Text * 1;
-        var num2 = num2Text * 1
-
-        var suma = num1 + num2;
-        alert(`"La suma es ${suma}"`)
-    }
-</script>
-
 <body>
-    <div>
-        <input id="Num1" type="text"><br>
-        <input id="Num2" type="text"><br>
-
-        <input type="button" value="Suma" onclick="Suma()">
-    </div>
-
+    <table>
+        <tr>
+            <td>
+                <div class="divRight">
+                    <label id="LbProgressOp"></label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="TbResult" id="TbResult" class="tbox">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="button" value="7" class="btn" onclick="app.PressNum(7)">
+                        </td>
+                        <td>
+                            <input type="button" value="8" class="btn" onclick="app.PressNum(8)">
+                        </td>
+                        <td>
+                            <input type="button" value="9" class="btn" onclick="app.PressNum(9)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" value="4" class="btn" onclick="app.PressNum(4)">
+                        </td>
+                        <td>
+                            <input type="button" value="5" class="btn" onclick="app.PressNum(5)">
+                        </td>
+                        <td>
+                            <input type="button" value="6" class="btn" onclick="app.PressNum(6)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" value="1" class="btn" onclick="app.PressNum(1)">
+                        </td>
+                        <td>
+                            <input type="button" value="2" class="btn" onclick="app.PressNum(2)">
+                        </td>
+                        <td>
+                            <input type="button" value="3" class="btn" onclick="app.PressNum(3)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" value="+" class="btn" onclick="app.PressAdd('+')">
+                        </td>
+                        <td>
+                            <input type="button" value="0" class="btn" onclick="app.PressNum(0)">
+                        </td>
+                        <td>
+                            <input type="button" value="=" class="btn" onclick="app.PressCalc('=')">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" value="-" class="btn" onclick="app.PressSubs('-')">
+                        </td>
+                        <td>
+                            <input type="button" value="*" class="btn" onclick="app.PressMult('*')">
+                        </td>
+                        <td>
+                            <input type="button" value="/" class="btn" onclick="app.PressDiv('/')">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 
 </html>

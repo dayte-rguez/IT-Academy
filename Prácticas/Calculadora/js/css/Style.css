@@ -1,0 +1,13 @@
+.btn {
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+}
+
+.tbox {
+    text-align: right;
+}
+
+.divRight {
+    float: right;
+}
