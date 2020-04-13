@@ -13,7 +13,7 @@ class App {
     TryReadCurrentNumber() {
         /* Create and object to return both the number and if the function 
          * succeeded to read it*/
-        var input = { IsSuccess: false, Value: null }
+        let input = { IsSuccess: false, Value: null }
 
         input.Value = Number(TbResult.value);
         /* A fastest alternative to convert string to number
@@ -51,8 +51,12 @@ class App {
     }
 
     CalcInProgress() {
-        /* Try to read second number */
-        var conversionResult = this.TryReadCurrentNumber();
+        /* Try to read second number 
+         * The let statement declares variables that are limited to a scope of a block statement, 
+         * or expression on which it is used. 
+         * Its use is more recommended than the use of var
+         * */
+        let conversionResult = this.TryReadCurrentNumber();
         if (conversionResult.IsSuccess) {
             /* Keep calculating conditions*/
             this.RunningOp = true;
@@ -64,7 +68,7 @@ class App {
     }
 
     DoTheMath(aOperation) {
-        var conversionResult = this.TryReadCurrentNumber();
+        let conversionResult = this.TryReadCurrentNumber();
         if (conversionResult.IsSuccess) {
             this.FirstNumber = conversionResult.Value;
             switch (aOperation) {
@@ -125,7 +129,7 @@ class App {
     //#region Calculator function buttons
 
     PressCalc() {
-        var conversionResult = this.TryReadCurrentNumber();
+        let conversionResult = this.TryReadCurrentNumber();
         if (conversionResult.IsSuccess) {
             /* Prepare for next operation: flag a brand new calculation can take place*/
             this.RunningOp = false;
@@ -189,12 +193,12 @@ class App {
     //#endregion Calculator function buttons
 }
 
-var app = new App();
+let app = new App();
 
 /* Don't use 0 as an enumeration number. Unless it's used for something that has not been set.
  * JS treats false || undefined || null || 0 || "" || '' || NaN all as the same value 
  * when compared using == */
-var Operations = {
+let Operations = {
     Add: 1,
     Subs: 2,
     Mult: 3,
