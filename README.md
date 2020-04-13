@@ -55,3 +55,4 @@ Most of the exercises are coded in <strong>C# in Visual Studio</strong>, as well
 		- Function return several values
 		- Enums
 		- Fastest way of converting a <strong>string to number</strong>
+		- Use of let instead of var
