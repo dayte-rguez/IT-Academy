@@ -56,3 +56,18 @@ Most of the exercises are coded in <strong>C# in Visual Studio</strong>, as well
 		- Enums
 		- Fastest way of converting a <strong>string to number</strong>
 		- Use of let instead of var
+- LINQ Intro
+	- Understanding String.Format method 
+- Faro shuffle. LINQ practice
+	- Use of yield return
+	- SelectMany in query and method syntax
+	- Take and Skip
+	- Use LINQ queries to aggregate data into a meaningful sequence
+	- Extension methods. Add my own custom functionality to LINQ queries
+	- IEnumerable<T>, GetEnumerator to move to next and retrieve current element
+	- Lazy evaluation
+	- Inefficient use of lazy evaluation
+	- Locate areas where the LINQ queries might run into performance issues like degraded speed
+	- Log queries
+	- ToArray/ToList to improve performance on lazy evaluation
+	- Lazy and eager evaluation in regards to LINQ queries and the implications they might have on query performance
