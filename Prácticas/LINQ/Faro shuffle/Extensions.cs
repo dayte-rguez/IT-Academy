@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Faro_shuffle
@@ -26,6 +27,36 @@ namespace Faro_shuffle
                 yield return secondIter.Current;
             }
         }
-        
+
+        /* This time, instead of yield returning each element, the matching elements of each sequence will be
+         * compared. When the entire sequence has been enumerated, if every element matches, the sequences are 
+         * the same */
+        public static bool SequenceEquals<T>(this IEnumerable<T> first, IEnumerable<T> second)
+        {
+            var firstIter = first.GetEnumerator();
+            var secondIter = second.GetEnumerator();
+
+            while (firstIter.MoveNext() && secondIter.MoveNext())
+            {
+                if (!firstIter.Current.Equals(secondIter.Current))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /* This extension method creates a new file called debug.log within the project directory and 
+         * records what query is currently being executed to the log file. 
+         * This extension method can be appended to any query to mark that the query executed. */
+        public static IEnumerable<T> LogQuery<T>(this IEnumerable<T> sequence, string tag)
+        {
+            // File.AppendText creates a new file if the file doesn't exist.
+            using (var writer = File.AppendText("debug.log"))
+            {
+                writer.WriteLine($"Executing query {tag}");
+            }
+            return sequence;
+        }
     }
 }
