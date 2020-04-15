@@ -10,3 +10,4 @@ D:\Projects\IT Academy\IT-Academy\Ejercicios y evaluaciones\LINQ\Fase1\obj\Debug
 D:\Projects\IT Academy\IT-Academy\Ejercicios y evaluaciones\LINQ\Fase1\obj\Debug\netcoreapp3.1\Fase1.dll
 D:\Projects\IT Academy\IT-Academy\Ejercicios y evaluaciones\LINQ\Fase1\obj\Debug\netcoreapp3.1\Fase1.pdb
 D:\Projects\IT Academy\IT-Academy\Ejercicios y evaluaciones\LINQ\Fase1\obj\Debug\netcoreapp3.1\Fase1.genruntimeconfig.cache
+D:\Projects\IT Academy\IT-Academy\Ejercicios y evaluaciones\LINQ\Fase1\obj\Debug\netcoreapp3.1\Fase1.csprojAssemblyReference.cache
