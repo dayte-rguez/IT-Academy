@@ -22,7 +22,7 @@ namespace Fase2
                 Console.Write("{0,1} ", number);
             }
 
-            Console.Write("\n\nThe average of the array is {0}, the minimum is {1} and the maximun {2}\n\n", average, min, max);
+            Console.Write("\n\nThe average of the array is {0}, the minimum is {1} and the maximun {2}\n", average, min, max);
         }
     }
 }
