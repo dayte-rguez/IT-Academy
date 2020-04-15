@@ -71,3 +71,8 @@ Most of the exercises are coded in <strong>C# in Visual Studio</strong>, as well
 	- Log queries
 	- ToArray/ToList to improve performance on lazy evaluation
 	- Lazy and eager evaluation in regards to LINQ queries and the implications they might have on query performance
+- LINQ
+	- Fase 1
+		- Get even numbers from an array of numbers
+	- Fase 2
+		- Get average, min and max of an array of numbers
