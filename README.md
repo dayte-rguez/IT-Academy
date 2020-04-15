@@ -76,3 +76,5 @@ Most of the exercises are coded in <strong>C# in Visual Studio</strong>, as well
 		- Get even numbers from an array of numbers
 	- Fase 2
 		- Get average, min and max of an array of numbers
+	- Fase 3
+		- >, < and distinct selection
