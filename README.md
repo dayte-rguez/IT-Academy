@@ -3,8 +3,8 @@
 
 What am I learning with each exercise?
 
-Most of the exercises are coded in <strong>C# in Visual Studio</strong>, as well as in <strong>JavaScript in Visual Studio Code</strong>.
-- Variables, constantes y bucles
+Some of the exercises are coded in <strong>C# in Visual Studio</strong>, as well as in <strong>JavaScript in Visual Studio Code</strong>.
+- Ejercicios y evaluaciones/Variables, constantes y bucles
 	- Fase 1
 		- How variables are declared
 		- How to concat strings and variable values
@@ -14,7 +14,7 @@ Most of the exercises are coded in <strong>C# in Visual Studio</strong>, as well
 	- Fase 2
 		- How operator "/" works
 		- Class of constants
-- Letras Repetidas
+- Ejercicios y evaluaciones/Letras Repetidas
 	- Fase 1
 		- For loops
 	- Fase 2
@@ -27,11 +27,11 @@ Most of the exercises are coded in <strong>C# in Visual Studio</strong>, as well
 		- Foreach in a Dictionary 
 	- Fase 4
 		- Concat function
-- Ciudades
+- Ejercicios y evaluaciones/Ciudades
 	- Fase 3
 		- Char replacement in string
 		- Array sort 
-- Restaurante
+- Ejercicios y evaluaciones/Restaurante
 	- Fase 2
 		- Tuples
 		- Function returns several values
@@ -41,7 +41,7 @@ Most of the exercises are coded in <strong>C# in Visual Studio</strong>, as well
 	- Fase 4
 		- Division getting the remainder
 		
-- Calculadora
+- Prácticas/Calculadora
 	- C#:
 		- Create a <strong>desktop application with .Net (WPF)</strong>
 		- MainWindow.xaml manages what will be the GUI of the resulting application
@@ -56,9 +56,9 @@ Most of the exercises are coded in <strong>C# in Visual Studio</strong>, as well
 		- Enums
 		- Fastest way of converting a <strong>string to number</strong>
 		- Use of let instead of var
-- LINQ Intro
+- Código durante las videoclases/LINQ/LINQ Intro
 	- Understanding String.Format method 
-- Faro shuffle. LINQ practice
+- Prácticas/LINQ/Faro shuffle.
 	- Use of yield return
 	- SelectMany in query and method syntax
 	- Take and Skip
@@ -71,7 +71,7 @@ Most of the exercises are coded in <strong>C# in Visual Studio</strong>, as well
 	- Log queries
 	- ToArray/ToList to cache results and improve performance on lazy evaluation
 	- Lazy and eager evaluation in regards to LINQ queries and the implications they might have on query performance
-- LINQ
+- Ejercicios y evaluaciones/LINQ
 	- Fase 1
 		- Get even numbers from an array of numbers
 		- Query and method syntax
@@ -81,3 +81,5 @@ Most of the exercises are coded in <strong>C# in Visual Studio</strong>, as well
 		- < , > and distinct selection
 	- Fase 4 
 		- Orderby desc
+- Recursos extra/Interfaces
+	- Polymorphism
