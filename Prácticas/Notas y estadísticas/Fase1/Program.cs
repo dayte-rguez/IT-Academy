@@ -82,6 +82,7 @@ namespace Fase1
 
         static double CalcGradesAvg(List<double> aGradesList)
         {
+            /* Use LINQ */
             return aGradesList.Average();
         }
 
