@@ -53,7 +53,7 @@ namespace Fase1
         static void MainMenu()
         {
             Console.WriteLine("Welcome to the Students Management Program");
-            Console.WriteLine("To finish the program, type \"end\"");
+            Console.WriteLine("To finish the program, type \"last\"");
         }
 
         static void AskForAGrade(int aStudentNumber)
