@@ -56,6 +56,26 @@ Some of the exercises are coded in <strong>C# in Visual Studio</strong>, as well
 		- Enums
 		- Fastest way of converting a <strong>string to number</strong>
 		- Use of let instead of var
+- Código durante las videoclases/Clases y Objetos/
+	- C#
+		- Passing Objects as parameters in Structured Programming
+			- Pass object properties as parameters
+			- Pass object as parameter
+		- OOP
+			- Create an object with an empty Constructor and assign values to its Properties in the moment of creation
+			- Create an object with an empty Constructor and assign values to its Properties after the moment of creation
+			- Create an object using a Constructor that takes the Properties values as parameters
+			- Define a Class
+			- Encapsulate Class Properties
+			- Define a Constructor
+			- Microsoft Visual Studio shortcut to the structure of a Constructor
+			- Constructor Overloading
+				- Empty Constructor 
+				- Less recommended Constructor
+			- Use of "this"	
+	- JS:
+		- How to avoid replacing Console.Writeline when copy/paste from C#
+		- Same as above (C#)
 - Código durante las videoclases/LINQ/LINQ Intro
 	- Understanding String.Format method 
 - Prácticas/LINQ/Faro shuffle.
