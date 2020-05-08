@@ -62,6 +62,10 @@ namespace Academy.Library.Context
         }
         public static bool DeleteStudent(Guid aId)
         {
+            if (aId == Guid.Empty)
+            {
+                return false;
+            }
             if (Students.ContainsKey(aId))
             {
                 var dni = Students[aId].Dni;
@@ -71,6 +75,17 @@ namespace Academy.Library.Context
             {
                 return false;
             }
+        }
+
+        public static bool ShowStudent(Guid aId, out Student aStudent)
+        {
+            if (aId == Guid.Empty)
+            {
+                aStudent = null;
+                return false;
+            }
+            aStudent = Students[aId];
+            return true;
         }
         #endregion
     }

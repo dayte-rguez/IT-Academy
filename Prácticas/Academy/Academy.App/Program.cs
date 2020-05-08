@@ -136,15 +136,14 @@ namespace Academy.App
         static void ShowHandleStudentsMenu()
         {
             CurrentOption = "a";
-            string dirtyOption, option, name, dni;
+            string option, name, dni;
             char pressedKey;
 
             while (true)
             {
                 ShowStudentsMenu();
                 /* Remove all whitespaces */
-                dirtyOption = Console.ReadLine();
-                option = String.Concat(dirtyOption.Where(o => !Char.IsWhiteSpace(o)));
+                option = String.Concat(Console.ReadLine().Where(o => !Char.IsWhiteSpace(o)));
 
                 #region Back to Main Menu
                 if (option == "m")
@@ -292,8 +291,15 @@ namespace Academy.App
                     if (option.Substring(0, 2) == "i+")
                     {
                         Console.WriteLine("\n-- Available Data --");
-                        Console.WriteLine("Name: {0}", DBContext.Students[id].Name);
-                        Console.WriteLine("DNI: {0}", DBContext.Students[id].Dni);
+                        if (DBContext.ShowStudent(id, out Student student))
+                        {
+                            Console.WriteLine("Name: {0}", student.Name);
+                            Console.WriteLine("DNI: {0}", student.Dni);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Something went wrong, the student with DNI {0} cannot be shown\n", dni);
+                        }
                     }
                     #endregion
                 }
