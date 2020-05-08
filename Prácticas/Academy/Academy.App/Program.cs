@@ -1,5 +1,5 @@
-﻿using Academy.Lib.Context;
-using Academy.Lib.Models;
+﻿using Academy.Library.Context;
+using Academy.Library.Models;
 using System;
 using System.Linq;
 
@@ -61,7 +61,6 @@ namespace Academy.App
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, currentLineCursor);
         }
-
         static void ShowStudentsMenu()
         {
             Console.WriteLine("-- Students Management Menu --");
@@ -72,46 +71,40 @@ namespace Academy.App
             Console.WriteLine("n/e     - to get a Student Subjects");
             Console.WriteLine("m       - to return to Main Menu");
         }
-
-        static bool IsDBMatchingDNI(string aDni)
-        {
-            return ((Student.DniIsValid(aDni)) && DBContext.StudentByDNI.ContainsKey(aDni));
-        }
-        static string GetNewDNI()
-        {
-            Console.WriteLine("Enter the Student DNI or type * to abort:");
-            var dni = Console.ReadLine();
-
-            if (dni != "*")
+            static string GetNewDNI()
             {
-                var keepLoop = true;
-                while (keepLoop)
+                Console.WriteLine("Enter the Student DNI or type * to abort:");
+                var dni = Console.ReadLine();
+
+                if (dni != "*")
                 {
-                    if (Student.DniIsValid(dni))
+                    var keepLoop = true;
+                    while (keepLoop)
                     {
-                        if (DBContext.StudentByDNI.ContainsKey(dni))
+                        if (Student.DniIsValid(dni))
                         {
-                            Console.WriteLine("A Student with that DNI is already in the DB");
-                            Console.WriteLine("Please, enter a new DNI or type * to abort");
-                            dni = Console.ReadLine();
-                            keepLoop = dni != "*";
+                            if (DBContext.StudentByDNI.ContainsKey(dni))
+                            {
+                                Console.WriteLine("A Student with that DNI is already in the DB");
+                                Console.WriteLine("Please, enter a new DNI or type * to abort");
+                                dni = Console.ReadLine();
+                                keepLoop = dni != "*";
+                            }
+                            else
+                            {
+                                keepLoop = false;
+                            }
                         }
                         else
                         {
-                            keepLoop = false;
+                            Console.WriteLine("Invalid DNI format, please, try again or type * to abort");
+                            dni = Console.ReadLine();
+                            keepLoop = dni != "*";
                         }
                     }
-                    else
-                    {
-                        Console.WriteLine("Invalid DNI format, please, try again or type * to abort");
-                        dni = Console.ReadLine();
-                        keepLoop = dni != "*";
-                    }
                 }
+                return dni;
             }
-            return dni;
-        }
-
         static string GetValidName()
         {
             Console.WriteLine("Enter the Student Name or type * to abort");
@@ -121,8 +114,12 @@ namespace Academy.App
             {
                 Console.WriteLine("Invalid name, please, try again");
                 name = Console.ReadLine();
-            }            
+            }
             return name;
+        }
+        static bool IsDBMatchingDNI(string aDni)
+        {
+            return ((Student.DniIsValid(aDni)) && DBContext.StudentByDNI.ContainsKey(aDni));
         }
         static void ShowHandleStudentsMenu()
         {
@@ -193,7 +190,7 @@ namespace Academy.App
                     {
                         ShowMainMenu();
                         break;
-                    }                    
+                    }
                     /* Get the ID related to the DNI */
                     var id = DBContext.StudentByDNI[dni].Id;
 
@@ -204,7 +201,7 @@ namespace Academy.App
                     ClearCurrentConsoleLine();
                     if (pressedKey != '*')
                     {
-                        
+
                         dni = GetNewDNI();
                         if (dni == "*")
                         {
@@ -226,7 +223,7 @@ namespace Academy.App
                         {
                             ShowMainMenu();
                             break;
-                        }                            
+                        }
                     }
                     else
                     {

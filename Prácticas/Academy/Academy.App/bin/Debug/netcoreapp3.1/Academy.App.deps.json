@@ -8,15 +8,15 @@
     ".NETCoreApp,Version=v3.1": {
       "Academy.App/1.0.0": {
         "dependencies": {
-          "Academy.Lib": "1.0.0"
+          "Academy.Library": "1.0.0"
         },
         "runtime": {
           "Academy.App.dll": {}
         }
       },
-      "Academy.Lib/1.0.0": {
+      "Academy.Library/1.0.0": {
         "runtime": {
-          "Academy.Lib.dll": {}
+          "Academy.Library.dll": {}
         }
       }
     }
@@ -27,7 +27,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Academy.Lib/1.0.0": {
+    "Academy.Library/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

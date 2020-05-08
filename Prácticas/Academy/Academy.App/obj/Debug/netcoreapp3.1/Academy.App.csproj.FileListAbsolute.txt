@@ -8,8 +8,8 @@ D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.App\bin\Debug\netco
 D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.App\bin\Debug\netcoreapp3.1\Academy.App.runtimeconfig.dev.json
 D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.App\bin\Debug\netcoreapp3.1\Academy.App.dll
 D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.App\bin\Debug\netcoreapp3.1\Academy.App.pdb
-D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.App\bin\Debug\netcoreapp3.1\Academy.Lib.dll
-D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.App\bin\Debug\netcoreapp3.1\Academy.Lib.pdb
+D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.App\bin\Debug\netcoreapp3.1\Academy.Library.dll
+D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.App\bin\Debug\netcoreapp3.1\Academy.Library.pdb
 D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.App\obj\Debug\netcoreapp3.1\Academy.App.csproj.CopyComplete
 D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.App\obj\Debug\netcoreapp3.1\Academy.App.dll
 D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.App\obj\Debug\netcoreapp3.1\Academy.App.pdb

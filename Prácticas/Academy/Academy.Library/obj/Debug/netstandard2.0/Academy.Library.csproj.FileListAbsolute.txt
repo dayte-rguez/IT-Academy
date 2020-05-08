@@ -1,0 +1,9 @@
+D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.Library\bin\Debug\netstandard2.0\Academy.Library.deps.json
+D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.Library\bin\Debug\netstandard2.0\Academy.Library.dll
+D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.Library\bin\Debug\netstandard2.0\Academy.Library.pdb
+D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.Library\obj\Debug\netstandard2.0\Academy.Library.csprojAssemblyReference.cache
+D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.Library\obj\Debug\netstandard2.0\Academy.Library.csproj.CoreCompileInputs.cache
+D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.Library\obj\Debug\netstandard2.0\Academy.Library.AssemblyInfoInputs.cache
+D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.Library\obj\Debug\netstandard2.0\Academy.Library.AssemblyInfo.cs
+D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.Library\obj\Debug\netstandard2.0\Academy.Library.dll
+D:\Projects\IT Academy\IT-Academy\Prácticas\Academy\Academy.Library\obj\Debug\netstandard2.0\Academy.Library.pdb

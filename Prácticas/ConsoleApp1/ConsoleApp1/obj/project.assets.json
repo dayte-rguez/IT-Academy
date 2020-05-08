@@ -2,28 +2,28 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Academy.Library/1.0.0": {
+      "ClassLibrary.Lib/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "compile": {
-          "bin/placeholder/Academy.Library.dll": {}
+          "bin/placeholder/ClassLibrary.Lib.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Academy.Library.dll": {}
+          "bin/placeholder/ClassLibrary.Lib.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Academy.Library/1.0.0": {
+    "ClassLibrary.Lib/1.0.0": {
       "type": "project",
-      "path": "../Academy.Library/Academy.Library.csproj",
-      "msbuildProject": "../Academy.Library/Academy.Library.csproj"
+      "path": "../ClassLibrary.Lib/ClassLibrary.Lib.csproj",
+      "msbuildProject": "../ClassLibrary.Lib/ClassLibrary.Lib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Academy.Library >= 1.0.0"
+      "ClassLibrary.Lib >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -33,11 +33,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\IT Academy\\IT-Academy\\Prácticas\\Academy\\Academy.App\\Academy.App.csproj",
-      "projectName": "Academy.App",
-      "projectPath": "D:\\Projects\\IT Academy\\IT-Academy\\Prácticas\\Academy\\Academy.App\\Academy.App.csproj",
+      "projectUniqueName": "D:\\Projects\\IT Academy\\IT-Academy\\Prácticas\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectName": "ConsoleApp1",
+      "projectPath": "D:\\Projects\\IT Academy\\IT-Academy\\Prácticas\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
       "packagesPath": "C:\\Users\\drodr\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\IT Academy\\IT-Academy\\Prácticas\\Academy\\Academy.App\\obj\\",
+      "outputPath": "D:\\Projects\\IT Academy\\IT-Academy\\Prácticas\\ConsoleApp1\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -57,8 +57,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\Projects\\IT Academy\\IT-Academy\\Prácticas\\Academy\\Academy.Library\\Academy.Library.csproj": {
-              "projectPath": "D:\\Projects\\IT Academy\\IT-Academy\\Prácticas\\Academy\\Academy.Library\\Academy.Library.csproj"
+            "D:\\Projects\\IT Academy\\IT-Academy\\Prácticas\\ConsoleApp1\\ClassLibrary.Lib\\ClassLibrary.Lib.csproj": {
+              "projectPath": "D:\\Projects\\IT Academy\\IT-Academy\\Prácticas\\ConsoleApp1\\ClassLibrary.Lib\\ClassLibrary.Lib.csproj"
             }
           }
         }
