@@ -66,45 +66,46 @@ namespace Academy.App
             Console.WriteLine("-- Students Management Menu --");
             Console.WriteLine("a       - to Add a New Student");
             Console.WriteLine("e + DNI - to Edit a Student by its DNI");
+            Console.WriteLine("d + DNI - to Delete a Student by its DNI");
             Console.WriteLine("n       - to get the Student Data");
             Console.WriteLine("n/e     - to get a Student Exams");
             Console.WriteLine("n/e     - to get a Student Subjects");
             Console.WriteLine("m       - to return to Main Menu");
         }
-            static string GetNewDNI()
-            {
-                Console.WriteLine("Enter the Student DNI or type * to abort:");
-                var dni = Console.ReadLine();
+        static string GetNewDNI()
+        {
+            Console.WriteLine("Enter the Student DNI or type * to abort:");
+            var dni = Console.ReadLine();
 
-                if (dni != "*")
+            if (dni != "*")
+            {
+                var keepLoop = true;
+                while (keepLoop)
                 {
-                    var keepLoop = true;
-                    while (keepLoop)
+                    if (Student.DniIsValid(dni))
                     {
-                        if (Student.DniIsValid(dni))
+                        if (DBContext.StudentByDNI.ContainsKey(dni))
                         {
-                            if (DBContext.StudentByDNI.ContainsKey(dni))
-                            {
-                                Console.WriteLine("A Student with that DNI is already in the DB");
-                                Console.WriteLine("Please, enter a new DNI or type * to abort");
-                                dni = Console.ReadLine();
-                                keepLoop = dni != "*";
-                            }
-                            else
-                            {
-                                keepLoop = false;
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid DNI format, please, try again or type * to abort");
+                            Console.WriteLine("A Student with that DNI is already in the DB");
+                            Console.WriteLine("Please, enter a new DNI or type * to abort");
                             dni = Console.ReadLine();
                             keepLoop = dni != "*";
                         }
+                        else
+                        {
+                            keepLoop = false;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid DNI format, please, try again or type * to abort");
+                        dni = Console.ReadLine();
+                        keepLoop = dni != "*";
                     }
                 }
-                return dni;
             }
+            return dni;
+        }
         static string GetValidName()
         {
             Console.WriteLine("Enter the Student Name or type * to abort");
@@ -176,7 +177,7 @@ namespace Academy.App
                 }
                 #endregion
                 #region Edit Student
-                else if (option[0] == 'e')
+                else if (option.Length == 11 && option.Substring(0,2) == "e+")
                 {
                     /* Get an existing DNI or the keyword to break */
                     dni = option.Substring(2);
@@ -247,6 +248,48 @@ namespace Academy.App
                     else
                     {
                         Console.WriteLine("Something went wrong, the student {0} with DNI {1} was not added\n", student.Name, student.Dni);
+                    }
+                }
+                #endregion
+                #region Delete Student
+                else if (option.Length == 11 && option.Substring(0, 2) == "d+")
+                {
+                    /* Get an existing DNI or the keyword to break */
+                    dni = option.Substring(2);
+                    while (!(IsDBMatchingDNI(dni)) && (dni != "*"))
+                    {
+                        Console.WriteLine("No Student associated with DNI {0} in the DB", dni);
+                        Console.WriteLine("Please, enter a valid DNI or type \"*\" to abort");
+                        dni = Console.ReadLine();
+                    }
+                    if (dni == "*")
+                    {
+                        ShowMainMenu();
+                        break;
+                    }
+                    /* Get the ID related to the DNI */
+                    var id = DBContext.StudentByDNI[dni].Id;
+
+                    /* Offer to abort or carry on */
+                    Console.WriteLine("Press any key to confirm removing the student {0} or press \"*\" to abort", DBContext.Students[id].Name);
+                    pressedKey = Console.ReadKey().KeyChar;
+                    ClearCurrentConsoleLine();
+                    if (pressedKey != '*')
+                    {
+
+                        if (!DBContext.DeleteStudent(id))
+                        {
+                            Console.WriteLine("Something went wrong, the student {0} was not removed\n", DBContext.Students[id].Name);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Student with DNI {0} succesfully removed", dni);
+                        }
+                    }
+                    else
+                    {
+                        ShowMainMenu();
+                        break;
                     }
                 }
                 #endregion

@@ -60,6 +60,18 @@ namespace Academy.Library.Context
             }
             else return AddStudent(aStudent);
         }
+        public static bool DeleteStudent(Guid aId)
+        {
+            if (Students.ContainsKey(aId))
+            {
+                var dni = Students[aId].Dni;
+                return (Students.Remove(aId) && StudentByDNI.Remove(dni));
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
     }
 }

@@ -64,5 +64,17 @@ namespace Academy.Library.Models
 
             return true;
         }
+
+        public bool Delete()
+        {
+            if (Id == Guid.Empty)
+            {
+                return false;
+            }
+            else
+            {
+                return DBContext.DeleteStudent(Id);
+            }
+        }
     }
 }
