@@ -1,6 +1,7 @@
 ﻿using Academy.Library.Context;
 using Academy.Library.Models;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace Academy.App
@@ -63,11 +64,11 @@ namespace Academy.App
         }
         static void ShowStudentsMenu()
         {
-            Console.WriteLine("-- Students Management Menu --");
+            Console.WriteLine("\n-- Students Management Menu --");
             Console.WriteLine("a       - to Add a New Student");
             Console.WriteLine("e + DNI - to Edit a Student by its DNI");
             Console.WriteLine("d + DNI - to Delete a Student by its DNI");
-            Console.WriteLine("n       - to get the Student Data");
+            Console.WriteLine("i + DNI - to get the Student Data");
             Console.WriteLine("n/e     - to get a Student Exams");
             Console.WriteLine("n/e     - to get a Student Subjects");
             Console.WriteLine("m       - to return to Main Menu");
@@ -122,17 +123,28 @@ namespace Academy.App
         {
             return ((Student.DniIsValid(aDni)) && DBContext.StudentByDNI.ContainsKey(aDni));
         }
+        static string GetExistingDNI(string aDni)
+        {
+            while (!(IsDBMatchingDNI(aDni)) && (aDni != "*"))
+            {
+                Console.WriteLine("No Student associated with DNI {0} in the DB", aDni);
+                Console.WriteLine("Please, enter a valid DNI or type \"*\" to abort");
+                aDni = Console.ReadLine();
+            }
+            return aDni;
+        }
         static void ShowHandleStudentsMenu()
         {
             CurrentOption = "a";
-            string option, name, dni;
+            string dirtyOption, option, name, dni;
             char pressedKey;
 
             while (true)
             {
                 ShowStudentsMenu();
                 /* Remove all whitespaces */
-                option = String.Concat(Console.ReadLine().Where(o => !Char.IsWhiteSpace(o)));
+                dirtyOption = Console.ReadLine();
+                option = String.Concat(dirtyOption.Where(o => !Char.IsWhiteSpace(o)));
 
                 #region Back to Main Menu
                 if (option == "m")
@@ -176,127 +188,121 @@ namespace Academy.App
                     }
                 }
                 #endregion
-                #region Edit Student
-                else if (option.Length == 11 && option.Substring(0,2) == "e+")
+                #region Options combined with DNI
+                else if (option.Length == 11)
                 {
+                    #region Common ground
                     /* Get an existing DNI or the keyword to break */
-                    dni = option.Substring(2);
-                    while (!(IsDBMatchingDNI(dni)) && (dni != "*"))
-                    {
-                        Console.WriteLine("No Student associated with DNI {0} in the DB", dni);
-                        Console.WriteLine("Please, enter a valid DNI or type \"*\" to abort");
-                        dni = Console.ReadLine();
-                    }
+                    dni = GetExistingDNI(option.Substring(2));
                     if (dni == "*")
                     {
                         ShowMainMenu();
                         break;
                     }
+
                     /* Get the ID related to the DNI */
                     var id = DBContext.StudentByDNI[dni].Id;
-
-                    #region Edit DNI
-                    /* Offer to provide a new valid DNI, keep the current one, or exit the edition */
-                    Console.WriteLine("Press any key to update the DNI or \"*\" to keep the current one");
-                    pressedKey = Console.ReadKey().KeyChar;
-                    ClearCurrentConsoleLine();
-                    if (pressedKey != '*')
-                    {
-
-                        dni = GetNewDNI();
-                        if (dni == "*")
-                        {
-                            ShowMainMenu();
-                            break;
-                        }
-                    }
                     #endregion
 
-                    #region Edit Name
-                    /* Offer to provide a new valid Student name or the keyword to break */
-                    Console.WriteLine("Press any key to update the Name or \"*\" to keep the current one");
-                    pressedKey = Console.ReadKey().KeyChar;
-                    ClearCurrentConsoleLine();
-                    if (pressedKey != '*')
+                    #region Edit Student
+                    if (option.Substring(0, 2) == "e+")
                     {
-                        name = GetValidName();
-                        if (name == "*")
+                        #region Edit DNI
+                        /* Offer to provide a new valid DNI, keep the current one, or exit the edition */
+                        Console.WriteLine("Press any key to update the DNI or \"*\" to keep the current one");
+                        pressedKey = Console.ReadKey().KeyChar;
+                        ClearCurrentConsoleLine();
+                        if (pressedKey != '*')
                         {
-                            ShowMainMenu();
-                            break;
+
+                            dni = GetNewDNI();
+                            if (dni == "*")
+                            {
+                                ShowMainMenu();
+                                break;
+                            }
                         }
-                    }
-                    else
-                    {
-                        name = DBContext.Students[id].Name;
-                    }
-                    #endregion
-
-                    /* Create the new data Student */
-                    var student = new Student
-                    {
-                        Id = id,
-                        Dni = dni,
-                        Name = name
-                    };
-                    /* Save the Student data */
-                    if (student.Save())
-                    {
-                        Console.WriteLine("The student was succesfully edited resulting the following data:");
-                        Console.WriteLine("Name: {0}\nDNI: {1}", student.Name, student.Dni);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Something went wrong, the student {0} with DNI {1} was not added\n", student.Name, student.Dni);
-                    }
-                }
-                #endregion
-                #region Delete Student
-                else if (option.Length == 11 && option.Substring(0, 2) == "d+")
-                {
-                    /* Get an existing DNI or the keyword to break */
-                    dni = option.Substring(2);
-                    while (!(IsDBMatchingDNI(dni)) && (dni != "*"))
-                    {
-                        Console.WriteLine("No Student associated with DNI {0} in the DB", dni);
-                        Console.WriteLine("Please, enter a valid DNI or type \"*\" to abort");
-                        dni = Console.ReadLine();
-                    }
-                    if (dni == "*")
-                    {
-                        ShowMainMenu();
-                        break;
-                    }
-                    /* Get the ID related to the DNI */
-                    var id = DBContext.StudentByDNI[dni].Id;
-
-                    /* Offer to abort or carry on */
-                    Console.WriteLine("Press any key to confirm removing the student {0} or press \"*\" to abort", DBContext.Students[id].Name);
-                    pressedKey = Console.ReadKey().KeyChar;
-                    ClearCurrentConsoleLine();
-                    if (pressedKey != '*')
-                    {
-
-                        if (!DBContext.DeleteStudent(id))
+                        #endregion
+                        #region Edit Name
+                        /* Offer to provide a new valid Student name or the keyword to break */
+                        Console.WriteLine("Press any key to update the Name or \"*\" to keep the current one");
+                        pressedKey = Console.ReadKey().KeyChar;
+                        ClearCurrentConsoleLine();
+                        if (pressedKey != '*')
                         {
-                            Console.WriteLine("Something went wrong, the student {0} was not removed\n", DBContext.Students[id].Name);
+                            name = GetValidName();
+                            if (name == "*")
+                            {
+                                ShowMainMenu();
+                                break;
+                            }
                         }
                         else
                         {
-                            Console.WriteLine("Student with DNI {0} succesfully removed", dni);
+                            name = DBContext.Students[id].Name;
+                        }
+                        #endregion
+
+                        /* Create the new data Student */
+                        var student = new Student
+                        {
+                            Id = id,
+                            Dni = dni,
+                            Name = name
+                        };
+                        /* Save the Student data */
+                        if (student.Save())
+                        {
+                            Console.WriteLine("The student was succesfully edited resulting the following data:");
+                            Console.WriteLine("Name: {0}\nDNI: {1}", student.Name, student.Dni);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Something went wrong, the student {0} with DNI {1} was not added\n", student.Name, student.Dni);
                         }
                     }
-                    else
+                    #endregion
+                    #region Delete Student
+                    else if (option.Substring(0, 2) == "d+")
                     {
-                        ShowMainMenu();
-                        break;
+                        /* Offer to abort or carry on */
+                        Console.WriteLine("Press any key to confirm removing the student {0} or press \"*\" to abort", DBContext.Students[id].Name);
+                        pressedKey = Console.ReadKey().KeyChar;
+                        ClearCurrentConsoleLine();
+                        if (pressedKey != '*')
+                        {
+
+                            if (!DBContext.DeleteStudent(id))
+                            {
+                                Console.WriteLine("Something went wrong, the student {0} was not removed\n", DBContext.Students[id].Name);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Student with DNI {0} succesfully removed", dni);
+                            }
+                        }
+                        else
+                        {
+                            ShowMainMenu();
+                            break;
+                        }
                     }
+                    #endregion
+                    #region Show Student
+                    if (option.Substring(0, 2) == "i+")
+                    {
+                        Console.WriteLine("\n-- Available Data --");
+                        Console.WriteLine("Name: {0}", DBContext.Students[id].Name);
+                        Console.WriteLine("DNI: {0}", DBContext.Students[id].Dni);
+                    }
+                    #endregion
                 }
                 #endregion
                 else
                 {
                     Console.WriteLine("The option \"{0}\" is invalid, please, try again", option);
                 }
+
             }
         }
     }
