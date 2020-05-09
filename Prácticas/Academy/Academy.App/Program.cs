@@ -138,6 +138,7 @@ namespace Academy.App
             CurrentOption = "a";
             string option, name, dni;
             char pressedKey;
+            Student student = new Student();
 
             while (true)
             {
@@ -169,12 +170,9 @@ namespace Academy.App
                         ShowMainMenu();
                         break;
                     }
-                    /* Create the Student */
-                    var student = new Student
-                    {
-                        Dni = dni,
-                        Name = name
-                    };
+                    /* Assign the data to Student */
+                    student.Dni = dni;
+                    student.Name = name;
 
                     /* Save the Student data */
                     if (student.Save())
@@ -199,29 +197,13 @@ namespace Academy.App
                         break;
                     }
 
-                    /* Get the ID related to the DNI */
-                    var id = DBContext.StudentByDNI[dni].Id;
+                    /* Get the student related to the entered DNI */
+                    student = DBContext.StudentByDNI[dni];
                     #endregion
 
                     #region Edit Student
                     if (option.Substring(0, 2) == "e+")
                     {
-                        #region Edit DNI
-                        /* Offer to provide a new valid DNI, keep the current one, or exit the edition */
-                        Console.WriteLine("Press any key to update the DNI or \"*\" to keep the current one");
-                        pressedKey = Console.ReadKey().KeyChar;
-                        ClearCurrentConsoleLine();
-                        if (pressedKey != '*')
-                        {
-
-                            dni = GetNewDNI();
-                            if (dni == "*")
-                            {
-                                ShowMainMenu();
-                                break;
-                            }
-                        }
-                        #endregion
                         #region Edit Name
                         /* Offer to provide a new valid Student name or the keyword to break */
                         Console.WriteLine("Press any key to update the Name or \"*\" to keep the current one");
@@ -235,20 +217,9 @@ namespace Academy.App
                                 ShowMainMenu();
                                 break;
                             }
-                        }
-                        else
-                        {
-                            name = DBContext.Students[id].Name;
+                            student.Name = name;
                         }
                         #endregion
-
-                        /* Create the new data Student */
-                        var student = new Student
-                        {
-                            Id = id,
-                            Dni = dni,
-                            Name = name
-                        };
                         /* Save the Student data */
                         if (student.Save())
                         {
@@ -265,19 +236,18 @@ namespace Academy.App
                     else if (option.Substring(0, 2) == "d+")
                     {
                         /* Offer to abort or carry on */
-                        Console.WriteLine("Press any key to confirm removing the student {0} or press \"*\" to abort", DBContext.Students[id].Name);
+                        Console.WriteLine("Press any key to confirm removing the student with DNI {0} or press \"*\" to abort", dni);
                         pressedKey = Console.ReadKey().KeyChar;
                         ClearCurrentConsoleLine();
                         if (pressedKey != '*')
                         {
-
-                            if (!DBContext.DeleteStudent(id))
+                            if (!student.Delete())
                             {
-                                Console.WriteLine("Something went wrong, the student {0} was not removed\n", DBContext.Students[id].Name);
+                                Console.WriteLine("Something went wrong, the student {0} with DNI {1} was not removed\n", student.Name, student.Dni);
                             }
                             else
                             {
-                                Console.WriteLine("Student with DNI {0} succesfully removed", dni);
+                                Console.WriteLine("Student {0} with DNI {1} succesfully removed", student.Name, student.Dni);
                             }
                         }
                         else
@@ -291,14 +261,14 @@ namespace Academy.App
                     if (option.Substring(0, 2) == "i+")
                     {
                         Console.WriteLine("\n-- Available Data --");
-                        if (DBContext.ShowStudent(id, out Student student))
+                        if (student.Show())
                         {
                             Console.WriteLine("Name: {0}", student.Name);
                             Console.WriteLine("DNI: {0}", student.Dni);
                         }
                         else
                         {
-                            Console.WriteLine("Something went wrong, the student with DNI {0} cannot be shown\n", dni);
+                            Console.WriteLine("Something went wrong, the student with DNI {0} cannot be shown\n", student.Dni);
                         }
                     }
                     #endregion

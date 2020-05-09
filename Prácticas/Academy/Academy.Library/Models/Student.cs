@@ -76,5 +76,20 @@ namespace Academy.Library.Models
                 return DBContext.DeleteStudent(Id);
             }
         }
+
+        public bool Show()
+        {
+            if (Id == Guid.Empty)
+            {
+                return false;
+            }
+            var student = DBContext.ShowStudent(Id, out bool succes);
+            if (succes)
+            {
+                this.Dni = student.Dni;
+                this.Name = student.Name;
+            }
+            return succes;
+        }
     }
 }

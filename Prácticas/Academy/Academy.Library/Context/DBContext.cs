@@ -37,7 +37,6 @@ namespace Academy.Library.Context
             StudentByDNI.Add(aStudent.Dni, aStudent);
             return true;
         }
-
         public static bool UpdateStudent(Student aStudent)
         {
             /* Although Student.Save makes sure the ID is not empty before invoking UpdateStudent,
@@ -50,11 +49,7 @@ namespace Academy.Library.Context
                 if (studentToUpdate != aStudent)
                 {
                     Students[aStudent.Id] = aStudent;
-                    if (studentToUpdate.Dni != aStudent.Dni)
-                    {
-                        StudentByDNI.Remove(studentToUpdate.Dni);
-                        StudentByDNI.Add(aStudent.Dni, aStudent);
-                    }
+                    StudentByDNI[aStudent.Dni] = aStudent;
                 }
                 return true;
             }
@@ -62,31 +57,71 @@ namespace Academy.Library.Context
         }
         public static bool DeleteStudent(Guid aId)
         {
-            if (aId == Guid.Empty)
+            if (aId == Guid.Empty || !Students.ContainsKey(aId))
             {
                 return false;
             }
-            if (Students.ContainsKey(aId))
-            {
-                var dni = Students[aId].Dni;
-                return (Students.Remove(aId) && StudentByDNI.Remove(dni));
-            }
-            else
-            {
-                return false;
-            }
+            var dni = Students[aId].Dni;
+            return (Students.Remove(aId) && StudentByDNI.Remove(dni));
         }
-
-        public static bool ShowStudent(Guid aId, out Student aStudent)
+        public static Student ShowStudent(Guid aId, out bool succes)
         {
-            if (aId == Guid.Empty)
+            if (aId == Guid.Empty || !Students.ContainsKey(aId))
             {
-                aStudent = null;
+                succes = false;
+                return null;
+                
+            }
+            succes = true;
+            return Students[aId];
+        }
+        #endregion
+
+        #region Subject CRUD
+        public static bool AddSubject(Subject aSubject)
+        {
+            if (aSubject.Id != Guid.Empty)
+            {
                 return false;
             }
-            aStudent = Students[aId];
+            aSubject.Id = new Guid();
+            Subjects.Add(aSubject.Id, aSubject);
             return true;
         }
+        public static bool UpdateSubject(Subject aSubject)
+        {
+            if (aSubject.Id == Guid.Empty || !Subjects.ContainsKey(aSubject.Id))
+            {
+                return false;
+            }
+            if (aSubject != Subjects[aSubject.Id])
+            {
+                Subjects[aSubject.Id] = aSubject;
+            }
+            return true;
+        }
+        public static bool DeleteSubject(Guid aId)
+        {
+            if (aId == Guid.Empty || !Subjects.ContainsKey(aId))
+            {
+                return false;
+            }
+            return Subjects.Remove(aId);
+        }
+        public static bool ShowSubject(Guid aId, out Subject aSubject)
+        {
+            if (aId == Guid.Empty || !Subjects.ContainsKey(aId))
+            {
+                aSubject = null;
+                return false;
+            }
+            aSubject = Subjects[aId];
+            return true;
+        }
+        #endregion
+
+        #region Exam CRUD
+
         #endregion
     }
 }
